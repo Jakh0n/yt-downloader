@@ -3,8 +3,8 @@
 import { VideoInfo as VideoInfoType } from '@/types'
 import { Loader2 } from 'lucide-react'
 import { useState } from 'react'
-import VideoInfo from './video-info'
-
+import DetailedVideo from './detailed-video'
+import VideoLoader from './detailed.video-loader'
 export default function LinkForm() {
 	const [url, setUrl] = useState('')
 	const [info, setInfo] = useState<VideoInfoType | null>(null)
@@ -59,23 +59,10 @@ export default function LinkForm() {
 				)}
 			</button>
 
+			{isLoading && <VideoLoader />}
 			{info && (
 				<>
-					<VideoInfo info={info} />
-					<div className='flex gap-2 mt-4'>
-						<button
-							onClick={() => download('mp4')}
-							className='flex-1 bg-green-600 text-white py-2 rounded'
-						>
-							Download MP4
-						</button>
-						<button
-							onClick={() => download('mp3')}
-							className='flex-1 bg-purple-600 text-white py-2 rounded'
-						>
-							Download MP3
-						</button>
-					</div>
+					<DetailedVideo info={info} download={download} />
 				</>
 			)}
 		</div>

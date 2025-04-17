@@ -1,6 +1,6 @@
-import { ChildProps } from '@/types'
+import { ReactNode } from 'react'
 
-const Layout = ({ children }: ChildProps) => {
+const Layout = ({ children }: { children: ReactNode }) => {
 	return <div>{children}</div>
 }
 
